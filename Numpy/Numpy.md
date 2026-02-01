@@ -1,79 +1,116 @@
-#include ndarray , & creation
+## 🔹 STEP 1: Problem with Python Lists
 
-STEP 1: Problem with Python Lists
-
+```python
 a = [1, 2, 3, 4]
 b = [10, 20, 30, 40]
 
-# element-wise addition chahiye
+# element-wise addition
 result = []
 for i in range(len(a)):
     result.append(a[i] + b[i])
 
 print(result)
+```
 
+### ❌ Problems with Python Lists
 
-Problems were : 
-1. Loop writing , 2. code lengthy , 3. Slow on large data  , 4. more memory
+1. Loop manually likhna padta hai
+2. Code lengthy ho jata hai
+3. Large data pe slow hota hai
+4. Memory efficient nahi hota
 
+---
 
-STEP 2: NumPy Solution
+## 🔹 STEP 2: NumPy Solution
 
+```python
 import numpy as np
 
 a = np.array([1, 2, 3, 4])
 b = np.array([10, 20, 30, 40])
 
 print(a + b)
+```
 
-output:
+### ✅ Output
 
+```
 [11 22 33 44]
+```
 
 <img width="758" height="309" alt="image" src="https://github.com/user-attachments/assets/b4f0f40b-940f-4799-ad4d-02650dd9ca47" />
 
-STEP 3: What is ndarray?
+✔ No loops
+✔ Short & readable code
+✔ Faster & memory efficient
 
+---
+
+## 🔹 STEP 3: What is ndarray?
+
+```python
 type(a)
+```
 
-output: <class 'numpy.ndarray'>
+### Output
 
-NumPy ka main object = ndarray (n-dimensional array)
+```
+<class 'numpy.ndarray'>
+```
 
-STEP 4: Creating NumPy Arrays
+👉 **ndarray** = NumPy ka main object
+👉 Matlab **n-dimensional array**
+
+---
+
+## 🔹 STEP 4: Creating NumPy Arrays
+
+```python
+import numpy as np
 
 arr = np.array([1, 2, 3, 4])
 
 arr = np.array([1, 2.5, 3])
 print(arr)
 print(arr.dtype)
+```
 
-output:
+### Output
 
+```
 [1.  2.5 3. ]
 float64
+```
 
+📌 NumPy automatically type convert kar deta hai (int → float)
 
-# Include shape , ndim , indexing 
+---
 
+## 🔹 Array Properties: shape, ndim, indexing
+
+```python
 import numpy as np
 
 arr1 = np.array([10, 20, 30, 40])
 
-
 print(arr1)
 print(arr1.ndim)
 print(arr1.shape)
+```
 
-output:
+### Output
 
+```
 [10 20 30 40]
 1
 (4,)
+```
 
+---
 
-STEP 2: 2D Array
+## 🔹 STEP 5: 2D Arrays
 
+```python
 marks = np.array([
     [80, 85, 90],
     [70, 75, 88],
@@ -82,97 +119,133 @@ marks = np.array([
 
 print(marks.ndim)
 print(marks.shape)
+```
 
-output:
+### Output
 
+```
 2
 (3, 3)
+```
 
-## slicing
+---
 
+## 🔹 Array Slicing
+
+```python
 marks[0:2, 1:3]
+```
 
-include rows 0 & 1 and column 1 & 2
+✔ Rows: 0 & 1
+✔ Columns: 1 & 2
 
-Negative indexing : 
+### Negative Indexing
 
-marks[-1]        # last student
-marks[:, -1]    # last subject
+```python
+marks[-1]       # last student
+marks[:, -1]   # last subject
+```
 
-also , print(array.shape)
+```python
+print(marks.shape)
+```
 
+---
 
+## 🔹 Array Creation Functions
 
-# include zeros • ones • arange • linspace • reshape • flatten • axis
+### zeros() & ones()
 
-STEP 1: zeros() & ones()
-
-import numpy as np
-
+```python
 z = np.zeros((3, 4))
 o = np.ones((2, 3))
 
 print(z)
 print(o)
+```
 
+---
 
-STEP 2: arange() (like range but better)
+### arange() – Better than range()
 
+```python
 arr = np.arange(1, 10)
 print(arr)
+```
 
+Output:
+
+```
 [1 2 3 4 5 6 7 8 9]
+```
 
-with steps: np.arange(0, 20, 2)
+With step:
 
+```python
+np.arange(0, 20, 2)
+```
 
-STEP 3: linspace()
+---
 
+### linspace()
+
+```python
 np.linspace(1, 10, 5)
+```
 
-output:
+Output:
 
+```
 [ 1.    3.25  5.5   7.75 10.  ]
+```
 
+---
 
-STEP 4: reshape()
+### reshape()
 
+```python
 arr = np.arange(1, 7)
 print(arr.reshape(2, 3))
+```
 
-output: 
+Output:
 
+```
 [[1 2 3]
  [4 5 6]]
+```
 
+---
 
-STEP 5: flatten()
+### flatten()
 
-arr2d = np.array([[1,2,3],[4,5,6]])
+```python
+arr2d = np.array([[1, 2, 3], [4, 5, 6]])
 print(arr2d.flatten())
+```
 
-output:
+Output:
 
+```
 [1 2 3 4 5 6]
+```
 
+---
 
-STEP 6: AXIS
+## 🔹 AXIS Concept
 
-marks = np.array([
-    [80, 85, 90],
-    [70, 75, 88],
-    [92, 89, 95]
-])
+```python
+marks.mean(axis=0)   # column-wise average
+marks.mean(axis=1)   # row-wise average
+```
 
-marks.mean(axis=0) , means har column ka average
+---
 
-marks.mean(axis=1)
+## 🔹 Broadcasting
 
+### ❌ Problem (Python List)
 
-# Broadcasting 
-
-STEP 1:Problem 
-
+```python
 salary = [30000, 40000, 50000]
 bonus = 5000
 
@@ -181,36 +254,44 @@ for s in salary:
     new_salary.append(s + bonus)
 
 print(new_salary)
+```
 
+Issues: loop, boring, slow for big data.
 
-again same issue of loop , boring , slow for big data
+---
 
-STEP 2: NumPy Way 
+### ✅ NumPy Way
 
-import numpy as np
-
+```python
 salary = np.array([30000, 40000, 50000])
 bonus = 5000
 
 print(salary + bonus)
+```
 
+Output:
 
-output:
-
+```
 [35000 45000 55000]
+```
 
+---
 
-STEP 3: Scalar Broadcasting
+### Scalar Broadcasting
 
+```python
 arr = np.array([1, 2, 3, 4])
 
 print(arr * 10)
 print(arr + 5)
 print(arr - 2)
+```
 
+---
 
-STEP 5: Broadcasting with 2D Arrays
+### Broadcasting with 2D Arrays
 
+```python
 marks = np.array([
     [80, 85, 90],
     [70, 75, 88],
@@ -219,136 +300,153 @@ marks = np.array([
 
 bonus = 5
 print(marks + bonus)
+```
 
+---
 
-# include Boolean Masking & Filtering
+## 🔹 Boolean Masking & Filtering
 
-STEP 1: Boolean Array
+### Boolean Array
 
-import numpy as np
-
+```python
 arr = np.array([10, 20, 30, 40])
-
 print(arr > 25)
+```
 
-output:
+Output:
 
+```
 [False False  True  True]
+```
 
+---
 
-STEP 2: Filtering using Boolean Mask
+### Filtering using Boolean Mask
 
+```python
 arr[arr > 25]
+```
 
+Output:
+
+```
 [30 40]
+```
 
+---
 
-STEP 4: Multiple Conditions
+### Multiple Conditions
 
+```python
 salary[(salary > 20000) & (salary < 50000)]
+```
 
+---
 
-STEP 6: Boolean Mask on 2D Array
+### Boolean Mask on 2D Array
 
-
+```python
 marks = np.array([
     [80, 35, 90],
     [45, 60, 30],
     [92, 88, 95]
 ])
 
-All passing marks (>40):
-
 marks[marks > 40]
+```
 
+Output:
 
+```
 [80 90 45 60 92 88 95]
+```
 
+---
 
+## 🔹 File Handling with NumPy (loadtxt & savetxt)
 
-#include loadtxt • savetxt • mini project
+### marks.csv
 
-marks.csv
-
+```
 80,85,90
 70,75,88
 92,89,95
+```
 
-STEP 2: np.loadtxt() — File READ
+---
 
-import numpy as np
+### Reading File using loadtxt()
 
+```python
 data = np.loadtxt("marks.csv", delimiter=",")
 print(data)
 print(data.shape)
+```
 
-output:
+Output:
 
-
+```
 [[80. 85. 90.]
  [70. 75. 88.]
  [92. 89. 95.]]
+```
 
+📌 Default dtype = float
 
-Now default dtype will be float , and delimiter is important
+---
 
+### Load with Specific dtype
 
-STEP 3: Specific dtype ke saath load karna
-
-
+```python
 data = np.loadtxt("marks.csv", delimiter=",", dtype=int)
+```
 
+---
 
-STEP 4: Agar file me header ho
+### File with Header
 
-eg:
-
-Maths,Science,English
-80,85,90
-70,75,88
-
+```python
 data = np.loadtxt(
     "marks.csv",
     delimiter=",",
     skiprows=1
 )
+```
 
+---
 
-STEP 5: np.savetxt() — File WRITE karna
+### Writing File using savetxt()
 
-
+```python
 np.savetxt(
     "output.csv",
     data,
     delimiter=",",
     fmt="%d"
 )
+```
 
+Format options:
 
-%d → integer
+* `%d` → integer
+* `%.2f` → float (2 decimals)
 
-%.2f → float (2 decimals)
+---
 
+## 🔹 Mini Project: Student Result System
 
-Step 6:
+### marks.csv
 
-avg = data.mean(axis=1)
-print("Student averages:", avg)
-
-subject_avg = data.mean(axis=0)
-print("Subject averages:", subject_avg)
-
-
-Suppose:
-
-marks.csv
-
+```
 78,85,90
 35,40,45
 88,92,95
 60,70,65
+```
 
+### Code
 
+```python
 import numpy as np
 
 # 1. Load data
@@ -357,17 +455,20 @@ marks = np.loadtxt("marks.csv", delimiter=",", dtype=int)
 # 2. Student-wise average
 student_avg = marks.mean(axis=1)
 
-# 3. Pass / Fail (avg >= 50)
+# 3. Pass / Fail
 result = np.where(student_avg >= 50, "Pass", "Fail")
 
 # 4. Combine data
 final_data = np.column_stack((student_avg, result))
 
 print(final_data)
+```
 
+---
 
-save result to file
+### Save Result to File
 
+```python
 np.savetxt(
     "result.csv",
     final_data,
@@ -376,3 +477,4 @@ np.savetxt(
     header="Average,Result",
     comments=""
 )
+```
