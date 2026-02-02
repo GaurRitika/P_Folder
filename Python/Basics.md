@@ -11,7 +11,7 @@ Here:
 * `"notes.txt"` → file name
 * `"r"` → mode (read)
 
-### Modes samjho (bahut important):
+### Modes :
 
 | Mode | Meaning                     |
 | ---- | --------------------------- |
